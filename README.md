@@ -9,3 +9,9 @@
 
 4. cd to the repo directory, do `vagrant up`.
 
+5. You'll see an instruction of how to create a database after installation is complete
+
+The default connection credentials:
+* Username: dbadmin
+* Password: pass
+
