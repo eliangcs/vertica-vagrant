@@ -38,3 +38,35 @@ Once installed, you have to create and start a database to start using Vertica.
 4. Select Configuration Menu > Create Database. Then follow the instruction.
 
 5. If the database is not started, select Start Database.
+
+## `vagrant up` failed on Mac OS
+
+If you see the following error when you do `vagrant up`:
+
+```
+The guest machine entered an invalid state while waiting for it
+to boot. Valid states are 'starting, running'. The machine is in the
+'poweroff' state. Please verify everything is configured
+properly and try again.
+```
+
+And when using VirtualBox GUI to start, you see a `VERR_SUPLIB_OWNER_NOT_ROOT`
+error.
+
+This is probably caused by the wrong permission on `/Applications` directory.
+You have two solutions.
+
+### Solution 1
+
+Fix the permission directly:
+
+```sh
+sudo chown root /Applications
+sudo chgrp wheel /Applications
+```
+
+Reference: https://forums.virtualbox.org/viewtopic.php?f=7&t=39179#p189623
+
+### Solution 2
+
+Go to **Disk Utility** and click **Repair Disk Permissions**.
