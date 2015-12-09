@@ -2,13 +2,16 @@
 
 The simplest single-node setup on a VirtualBox VM, **for development only**!
 
+This setup uses Vertica 7.2.1. If you need a different version, checkout to
+the other branch!
+
 ## Installation
 
 1. Install Virtualbox and Vagrant.
 
 2. Clone or download this repo.
 
-3. Download `vertica_7.1.1-0_amd64.deb` (community edition) from
+3. Download `vertica_7.2.1-0_amd64.deb` (community edition) from
    http://my.vertica.com, and put the file to the repo directory.
 
 4. (Optional) Configure VM settings such as memory capacity and IP address in
@@ -18,6 +21,7 @@ The simplest single-node setup on a VirtualBox VM, **for development only**!
 
 The default connection credentials:
 
+* Database name: localdev
 * Username: dbadmin
 * Password: pass
 
