@@ -35,9 +35,7 @@ Once installed, you have to create and start a database to start using Vertica.
 
         /opt/vertica/bin/adminTools
 
-4. Select Configuration Menu > Create Database. Then follow the instruction.
-
-5. If the database is not started, select Start Database.
+4. If the database is not started, select Start Database.
 
 ## `vagrant up` failed on Mac OS
 

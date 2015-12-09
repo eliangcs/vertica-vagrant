@@ -4,6 +4,15 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+$TZ_script = <<SCRIPT
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+export TZ="/usr/share/zoneinfo/UTC"
+cat >> /etc/profile <<EOF
+export TZ="/usr/share/zoneinfo/UTC"
+EOF
+SCRIPT
+
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
@@ -14,7 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "vertica.local"
 
-  config.vm.provision "file", source: "./vertica_7.1.1-0_amd64.deb", destination: "/home/vagrant/vertica.deb"
+  config.vm.provision :shell, :inline => $TZ_script
+  config.vm.provision "file", source: "./vertica_7.2.1-0_amd64.deb", destination: "/home/vagrant/vertica.deb"
   config.vm.provision "shell", path: "install.sh"
   config.vm.provision "shell", path: "configure.sh"
 
